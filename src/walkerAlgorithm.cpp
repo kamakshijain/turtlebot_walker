@@ -38,7 +38,7 @@ WalkerAlgorithm::~WalkerAlgorithm() {
     publishVelocity.publish(msg);
 }
 
-void WalkerAlgorithm::laserScannerCallback(cont sensor_msgs::LaserScan::ConstPtr& input) {
+
 void WalkerAlgorithm::laserScannerCallback(const sensor_msgs::LaserScan::ConstPtr& input) {
     double safe_distance = 0.75;
     for (int i = 0; i < input->ranges.size(); ++i) {
