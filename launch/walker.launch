@@ -1,6 +1,14 @@
 <launch>
+     <arg name="record" default="false"/>
+     <arg name="record_time" default="30"/>
     <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
+        <arg name="world_file" value="$(find turtlebot_walker)/world/tt.world"/>
     </include>
-
-    <node name="walkerAlgorithm" pkg="turtlebot_walker" type="walker" output="screen"/>
- </launch>  
+    <node 
+        pkg="turtlebot_walker" 
+        name="walkerAlgorithm"
+        type="walker" 
+        output="screen" 
+        launch-prefix="gnome-terminal --command"
+     />
+</launch>  
