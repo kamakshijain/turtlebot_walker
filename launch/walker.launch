@@ -11,4 +11,12 @@
         output="screen" 
         launch-prefix="gnome-terminal --command"
      />
+
+    <node
+        pkg="rosbag"
+        name="record"
+        type="record"
+        args="--all --output-name=$(find turtlebot_walker)/results/walker.bag"
+    if="$(arg record)"
+    />
 </launch>  
