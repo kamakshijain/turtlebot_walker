@@ -42,7 +42,8 @@ WalkerAlgorithm::WalkerAlgorithm() {
     // initialise the obstacle flag to be false
     obstacle_flag = false;
     // Publish the velocity to cmd_vel_mux/input/navi
-    publishVelocity = nh.advertise <geometry_msgs::Twist> ("/cmd_vel_mux/input/navi",
+    publishVelocity = nh.advertise <geometry_msgs::Twist>
+    ("/cmd_vel_mux/input/navi",
     1000);
     // Subcribe to the /scan topic and use the laserCallback method
     subscribeLaserScan = nh.subscribe <sensor_msgs::LaserScan> ("/scan", 500,
@@ -74,7 +75,8 @@ WalkerAlgorithm::~WalkerAlgorithm() {
 }
 
 
-void WalkerAlgorithm::laserScannerCallback(const sensor_msgs::LaserScan::ConstPtr& input) {
+void WalkerAlgorithm::laserScannerCallback
+    (const sensor_msgs::LaserScan::ConstPtr& input) {
     double safe_distance = 0.75;
     for (int i = 0; i < input->ranges.size(); ++i) {
         if (input->ranges[i] < safe_distance) {
@@ -92,13 +94,12 @@ bool WalkerAlgorithm::checkObstacle() {
 void WalkerAlgorithm::runTurtlebot() {
     // Set the frequency of publisher
     ros::Rate loop_rate(10);
-
-     //Keep running till ROS is running fine. 
+     // Keep running till ROS is running fine.
     while (ros::ok()) {
-        // Proceed if obstacle encountered. 
-        if(checkObstacle()) {
+        // Proceed if obstacle encountered.
+        if (checkObstacle()) {
             ROS_INFO_STREAM("Obstacle Detected...!!!");
-            // Turn the robot 
+            // Turn the robot
             msg.linear.x = 0.0;
             msg.angular.z = 1.0;
         } else {
@@ -107,13 +108,13 @@ void WalkerAlgorithm::runTurtlebot() {
             msg.angular.z = 0.0;
         }
 
-        // Publish the message 
+        // Publish the message
         publishVelocity.publish(msg);
 
-        // "Spin" a callback in case we setup any callbacks 
+        // "Spin" a callback in case we setup any callbacks
         ros::spinOnce();
 
-         //Sleep untill we reach time for 10Hz rate.
+         // Sleep untill we reach time for 10Hz rate.
         loop_rate.sleep();
     }
 }
