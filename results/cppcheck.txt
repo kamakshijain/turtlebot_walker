@@ -1,0 +1,7 @@
+kamakshi@kamakshi-ZenBook-Pro-15-UX550GE-UX550GE:~/catkin_ws/src/turtlebot_walker$ cppcheck --enable=all --std=c++11 -I include/ --suppress=missingIncludeSystem
+ $( find . -name *.cpp | grep -vE -e "^./build/" -e "^./vendor/" )
+Checking src/main.cpp...
+1/2 files checked 33% done
+Checking src/walkerAlgorithm.cpp...
+2/2 files checked 100% done
+

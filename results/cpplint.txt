@@ -1,0 +1,5 @@
+kamakshi@kamakshi-ZenBook-Pro-15-UX550GE-UX550GE:~/catkin_ws/src/turtlebot_walker$ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
+Done processing ./src/walkerAlgorithm.cpp
+Done processing ./src/main.cpp
+Done processing ./include/walkerAlgorithm.hpp
+
